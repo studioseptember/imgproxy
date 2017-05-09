@@ -20,7 +20,18 @@ class ImgproxyServiceProvider extends ServiceProvider {
          */
         public function boot()
         {
-                $this->package('spescina/imgproxy');
+	        $this->publishes([
+		        dirname(dirname(__DIR__)).'/config/config.php' => config_path('imgproxy.php')
+	        ], 'config');
+
+	        $this->publishes([
+		        dirname(dirname(dirname(__DIR__))).'/public' => public_path('packages/spescina/imgproxy'),
+	        ], 'public');
+
+	        $this->publishes([
+		        dirname(dirname(dirname(__DIR__))).'/storage/app/cache/imgproxy' => storage_path('app/cache/imgproxy'),
+	        ], 'storage');
+
         }
 
         /**
@@ -54,9 +65,9 @@ class ImgproxyServiceProvider extends ServiceProvider {
 
         private function registerServices()
         {
-                $this->app['imgproxy'] = $this->app->share(function($app) {
-                        return new Imgproxy();
-                });
+            $this->app->singleton('imgproxy', function($app) {
+                return new Imgproxy();
+            });
         }
 
 }

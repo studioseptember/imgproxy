@@ -10,7 +10,7 @@ define ('FILE_CACHE_SUFFIX', '.imgproxy.cache');
 
 define ('FILE_CACHE_PREFIX', '');
 
-define ('FILE_CACHE_DIRECTORY', '../../../../app/storage/cache/imgproxy');
+define ('FILE_CACHE_DIRECTORY', __DIR__ . '/../../../../storage/app/cache/imgproxy');
 
 define ('NOT_FOUND_IMAGE', './nophoto.gif');
 
@@ -19,3 +19,5 @@ define ('ERROR_IMAGE', './nophoto.gif');
 define ('PNG_IS_TRANSPARENT', FALSE);
 
 define ('DEFAULT_Q', 90);
+
+define ('ALLOW_ALL_EXTERNAL_SITES', true);
